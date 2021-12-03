@@ -31,14 +31,16 @@ def train_logistic_regression(config):
     model = SGDClassifier(loss = 'log',
                           learning_rate= 'constant',
                           eta0= config['lrate'],
-                                                    
+                          penalty='elasticnet',
+                          l1_ratio=config['l2_reg'],
+                          max_iter=config['n_epochs'],
+                          shuffle=True
                           )
 
-    print(config['n_epochs'])
-    start = time.time()
+#     start = time.time()
     model.fit(train_img, train_lbl)
-    end = time.time()
-    print(end-start)
+#     end = time.time()
+#     print(end-start)
     # define the evaluation metric as return
     return 1 - model.score(test_img, test_lbl)  # SMAC minimizes the objective function
 
@@ -46,7 +48,7 @@ def train_logistic_regression(config):
 configspace = ConfigurationSpace()
 configspace.add_hyperparameter(UniformFloatHyperparameter("lrate", 0, 10))
 configspace.add_hyperparameter(UniformFloatHyperparameter("l2_reg", 0, 1))
-configspace.add_hyperparameter(UniformIntegerHyperparameter("batchsize", 20, 2000))
+# configspace.add_hyperparameter(UniformIntegerHyperparameter("batchsize", 20, 2000))
 configspace.add_hyperparameter(UniformIntegerHyperparameter("n_epochs", 5, 2000))
 
 if __name__ == "__main__":

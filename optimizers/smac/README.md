@@ -1,6 +1,6 @@
 # Sequential Model Algorithm Configuration (SMAC)
 
-The installation is taken from the repository https://github.com/automl/SMAC3.  The file `get_optimization_data.py` is adopted from the repository minimal example.
+The installation and miscellaneous sections are taken from the repository https://github.com/automl/SMAC3.  The file `get_optimization_data.py` is adopted from the repository minimal example.
 
 
 ## Installation

@@ -1,0 +1,15 @@
+cloudpickle==2.0.0
+decorator==4.4.2
+future==0.18.2
+hyperopt==0.2.7
+joblib==1.1.0
+networkx==2.5.1
+numpy==1.19.5
+py4j==0.10.9.3
+python-mnist==0.7
+scikit-learn==0.23.1
+scipy==1.5.4
+six==1.16.0
+sklearn==0.0
+threadpoolctl==3.0.0
+tqdm==4.62.3

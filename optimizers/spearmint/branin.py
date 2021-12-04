@@ -1,28 +1,31 @@
+from mnist import MNIST
 import numpy as np
 import math
 from sklearn.linear_model import SGDClassifier
-from sklearn.datasets import load_digits
-from sklearn.model_selection import train_test_split
-from sklearn.datasets import fetch_openml
-
+import multiprocessing as mp
+import os
 
 
 def branin(lrate, l2_reg,n_epochs):
 
-    mnist = fetch_openml('mnist_784')
+    mndata = MNIST('MNIST')
 
-    x_train, x_test, y_train, y_test = train_test_split(mnist.data, mnist.target, test_size=0.15, random_state=0)
+    x_train, y_train = mndata.load_training() 
+    
+    x_test, y_test = mndata.load_testing()
 
+    y_train = np.array(y_train)
+    y_test = np.array(y_test)
 
-    clf = SGDClassifier(loss = 'log', learning_rate='constant', eta0=lrate, penalty='elasticnet', l1_ratio=l2_reg, max_iter=n_epochs, shuffle=True)
+    clf = SGDClassifier(loss = 'log', learning_rate='constant', eta0=lrate, penalty='elasticnet', l1_ratio=l2_reg, max_iter=n_epochs, shuffle=True, n_jobs=os.environ['SLURM_JOB_CPUS_PER_NODE'])
 
     clf.fit(x_train, y_train)
 
     result = clf.score(x_test, y_test)
 
-    print result
+    print (1 - result)
     #time.sleep(np.random.randint(60))
-    return result
+    return 1 - result
 
 # Write a function like this called 'main'
 def main(job_id, params):

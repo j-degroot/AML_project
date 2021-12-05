@@ -4,7 +4,7 @@ config.json is the configuration file
 
 outputs contains the outputs of all spearmint runs (each folder is one run with 100 evaluations). 
 
-toCsv.py converts the data in output to a csv file in the correct format
+toCsv.py converts output files to a csv file in the correct format
 
 CSVs contains the iformation the output sub-directories cnoverted to .csv files.
 

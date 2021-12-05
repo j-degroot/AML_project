@@ -2,9 +2,11 @@ branin.py contains the objective function (logistic regression)
 
 config.json is the configuration file
 
-output is an example of 1 run containing 5 evaluations (1 file = 1 evaluation) 
+outputs contains the outputs of all spearmint runs (each folder is one run with 100 evaluations). 
 
 toCsv.py converts the data in output to a csv file in the correct format
+
+CSVs contains the iformation the output sub-directories cnoverted to .csv files.
 
 SMLOG.slurm is the batch file for one run of Spearmint on Logistic Regression.
 

@@ -1,0 +1,14 @@
+Job launching after 0.24 seconds in submission.
+Running python job.
+Changed into dir /data/s3305139/simple
+Importing branin.py
+Running branin.main()
+/data/s3305139/python_venvs/spear_venv/lib/python2.7/site-packages/sklearn/linear_model/stochastic_gradient.py:183: FutureWarning: max_iter and tol parameters have been added in SGDClassifier in 0.19. If max_iter is set but tol is left unset, the default value for tol in 0.19 and 0.20 will be None (which is equivalent to -infinity, so it has no effect) but will change in 0.21 to 1e-3. Specify tol to silence this warning.
+  FutureWarning)
+Got result 0.13759999999999994
+Completed successfully in 391.50 seconds. [{u'main': 0.13759999999999994}]
+Anything printed here will end up in the output directory for job #39
+1.0
+0.8353813335188254
+1732
+0.13759999999999994

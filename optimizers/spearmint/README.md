@@ -10,5 +10,5 @@ CSVs contains the iformation the output sub-directories cnoverted to .csv files.
 
 SMLOG.slurm is the batch file for one run of Spearmint on Logistic Regression.
 
-To run, follow the instructions here: https://github.com/HIPS/Spearmint where </path/to/experiment/directory> is this directory. 
+To run, follow the instructions here: https://github.com/HIPS/Spearmint where </path/to/experiment/directory> is the path to this directory. 
 

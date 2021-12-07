@@ -6,7 +6,7 @@ outputs contains the outputs of all spearmint runs (each folder is one run with 
 
 toCsv.py converts output files to a csv file in the correct format
 
-CSVs contains the iformation the output sub-directories cnoverted to .csv files.
+CSVs contains the information the output sub-directories cnoverted to .csv files.
 
 SMLOG.slurm is the batch file for one run of Spearmint on Logistic Regression.
 

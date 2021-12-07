@@ -4,9 +4,9 @@ config.json is the configuration file
 
 outputs contains the outputs of all spearmint runs (each folder is one run with 100 evaluations). 
 
-toCsv.py converts output files to a csv file in the correct format
+toCsv.py converts output files to a csv file in the correct format.
 
-CSVs contains the information the output sub-directories cnoverted to .csv files.
+Data contains the csv files for the 10 runs.
 
 SMLOG.slurm is the batch file for one run of Spearmint on Logistic Regression.
 

@@ -1,0 +1,3 @@
+l2_reg real [0.0, 1.0] [0.5]
+lrate real [0.0, 1.0] [0.5]
+n_epochs integer [5, 2000] [1002]

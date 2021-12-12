@@ -34,6 +34,10 @@ pip install .
 We refer to the [documention](https://automl.github.io/SMAC3) for further installation options.
 
 
+## Data Processing
+The data during a SMAC optimization run is stored in
+`smac_<date>/run_<run_id>/*.json`
+The runhistory, `runhistory.json` of each run contains the algorithm performance and the hyperparameters. The `.json` file is converted to `.csv` by the file `json_to_csv.py`.
 
 ## Miscellaneous
 

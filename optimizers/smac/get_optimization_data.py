@@ -1,10 +1,12 @@
 from sklearn.datasets import fetch_openml
 from sklearn.linear_model import LogisticRegression, SGDClassifier
+from sklearn.metrics import log_loss, mean_squared_error
 from sklearn.model_selection import train_test_split
 from ConfigSpace import ConfigurationSpace
 from ConfigSpace.hyperparameters import UniformIntegerHyperparameter, UniformFloatHyperparameter
 from smac.facade.smac_bb_facade import SMAC4BB
 from smac.scenario.scenario import Scenario
+import numpy as np
 
 import time
 
@@ -27,7 +29,6 @@ def train_logistic_regression(config):
     Return:
         cost (float): Performance measure on the validation data.
     """
-    # model = LogisticRegression(C=config["C"])
     model = SGDClassifier(loss = 'log',
                           learning_rate= 'constant',
                           eta0= config['lrate'],
@@ -37,18 +38,13 @@ def train_logistic_regression(config):
                           shuffle=True
                           )
 
-#     start = time.time()
     model.fit(train_img, train_lbl)
-#     end = time.time()
-#     print(end-start)
-    # define the evaluation metric as return
     return 1 - model.score(test_img, test_lbl)  # SMAC minimizes the objective function
 
 
 configspace = ConfigurationSpace()
 configspace.add_hyperparameter(UniformFloatHyperparameter("lrate", 0, 10))
 configspace.add_hyperparameter(UniformFloatHyperparameter("l2_reg", 0, 1))
-# configspace.add_hyperparameter(UniformIntegerHyperparameter("batchsize", 20, 2000))
 configspace.add_hyperparameter(UniformIntegerHyperparameter("n_epochs", 5, 2000))
 
 if __name__ == "__main__":
@@ -58,8 +54,9 @@ if __name__ == "__main__":
         "run_obj": "quality",  # Optimize quality (alternatively runtime)
         "runcount-limit": 100,  # Max number of function evaluations (the more the better)
         "cs": configspace,
+        "abort_on_first_run_crash": False
     })
-    for seed in range(10):
+    for seed in range(0, 11):
         smac = SMAC4BB(scenario=scenario, tae_runner=train_logistic_regression, rng=seed)
         best_found_config = smac.optimize()
         print(best_found_config)

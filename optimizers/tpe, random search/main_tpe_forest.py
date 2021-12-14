@@ -25,7 +25,7 @@ best_params = {
     'n_estimators': 1,
     'max_features': 1
 }
-# train Random Forrest regression with all gathered data
+# train Random Forest regression with all gathered data
 # and best founded parameters in previous random search
 rf = RandomForestRegressor(min_samples_split=best_params['min_samples_split'],
                            n_estimators=best_params['n_estimators'],

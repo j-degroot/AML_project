@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ded6dab4-cc96-434c-85d5-e04cbcc782d0" name="Changes" comment="added xgboost surrogate for smac and tpe optimization">
-      <change afterPath="$PROJECT_DIR$/xgboost/XGB-SMAC.sav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xgboost/XGB-TPE.sav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xgboost/simulate_SMAC.py" afterDir="false" />
+    <list default="true" id="ded6dab4-cc96-434c-85d5-e04cbcc782d0" name="Changes" comment="Added the selected and trained xgboost model for smac and tpe">
+      <change afterPath="$PROJECT_DIR$/xgboost/get_surrogate_data_SMAC.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/xgboost/get_surrogate_data_TPE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Random Forrest/RF-SMAC.sav" beforeDir="false" afterPath="$PROJECT_DIR$/Random Forest/RF-SMAC.sav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Random Forrest/RF-TPE.sav" beforeDir="false" afterPath="$PROJECT_DIR$/Random Forest/RF-TPE.sav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Random Forrest/RF-surrogate_SMAC.py" beforeDir="false" afterPath="$PROJECT_DIR$/Random Forest/RF-surrogate_SMAC.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Random Forrest/RF-surrogate_TPE.py" beforeDir="false" afterPath="$PROJECT_DIR$/Random Forest/RF-surrogate_TPE.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leave_ooo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/optimizers/tpe, random search/main_tpe_forest.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimizers/tpe, random search/main_tpe_forest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimizers/smac/get_optimization_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimizers/smac/get_optimization_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimizers/spearmint/branin.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimizers/spearmint/branin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xgboost/XGB-TPE.sav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xgboost/XGB-surrogate_SMAC.py" beforeDir="false" afterPath="$PROJECT_DIR$/xgboost/XGB-surrogate_SMAC.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xgboost/XGB-surrogate_TPE.py" beforeDir="false" afterPath="$PROJECT_DIR$/xgboost/XGB-surrogate_TPE.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +62,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/xgboost" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -72,13 +71,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/xgboost" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/optimizers/smac" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/optimizers/smac/non_relevant" />
       <recent name="$PROJECT_DIR$/xgboost" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/optimizers/smac/non_relevant" />
+      <recent name="$PROJECT_DIR$/non-relevant" />
       <recent name="$PROJECT_DIR$/optimizers/smac" />
     </key>
   </component>
@@ -121,7 +122,11 @@
       <workItem from="1639220747021" duration="14031000" />
       <workItem from="1639305572397" duration="4409000" />
       <workItem from="1639342704867" duration="307000" />
-      <workItem from="1639482032207" duration="620000" />
+      <workItem from="1639482032207" duration="1383000" />
+      <workItem from="1639504669746" duration="3930000" />
+      <workItem from="1639511540625" duration="3531000" />
+      <workItem from="1639562025722" duration="464000" />
+      <workItem from="1639562497394" duration="6889000" />
     </task>
     <task id="LOCAL-00001" summary="added json output files">
       <created>1639143122482</created>
@@ -172,7 +177,21 @@
       <option name="project" value="LOCAL" />
       <updated>1639310289653</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Moving files">
+      <created>1639482969904</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1639482969904</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added the selected and trained xgboost model for smac and tpe">
+      <created>1639483005063</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1639483005063</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +216,9 @@
     <MESSAGE value="cleaned get_optimization_data.py" />
     <MESSAGE value="renamed json-to-csv.py to json_to_csv.py" />
     <MESSAGE value="added xgboost surrogate for smac and tpe optimization" />
-    <option name="LAST_COMMIT_MESSAGE" value="added xgboost surrogate for smac and tpe optimization" />
+    <MESSAGE value="Moving files" />
+    <MESSAGE value="Added the selected and trained xgboost model for smac and tpe" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the selected and trained xgboost model for smac and tpe" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/AML_project$get_optimization_data.coverage" NAME="get_optimization_data Coverage Results" MODIFIED="1639221258570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/optimizers/smac" />

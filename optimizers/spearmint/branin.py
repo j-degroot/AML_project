@@ -34,4 +34,3 @@ def main(job_id, params):
     print params['l2_reg'][0]
     print params['n_epochs'][0]
     return branin(params['lrate'], params['l2_reg'],params['n_epochs'])
-

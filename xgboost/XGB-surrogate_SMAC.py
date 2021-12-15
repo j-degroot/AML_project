@@ -10,7 +10,7 @@ data_y = []
 opts = ['random', 'tpe', 'run']
 for op in opts:
     for i in range(10):
-        with open('Data-NoTPE/' + op + str(i) +'.csv', 'r') as read_obj:
+        with open('Data-NoSMAC/' + op + str(i) +'.csv', 'r') as read_obj:
             csv_reader = reader(read_obj)
             header = next(csv_reader)
             # Check file as empty
@@ -36,9 +36,9 @@ param_distributions = dict(max_depth=stats.randint(3,18),
                            learning_rate=stats.loguniform(0.005, 0.5),
                            min_child_weight=stats.randint(1, 10))
 
-xgb = XGBClassifier()
+xgb = XGBRegressor()
 
-clf = RandomizedSearchCV(xgb, param_distributions, n_iter = 100, random_state=0, n_jobs=-1)
+clf = RandomizedSearchCV(xgb, param_distributions, cv=2, n_iter=100, random_state=0, n_jobs=-1)
 
 search = clf.fit(data_X, data_y)
 

@@ -1,0 +1,4 @@
+"CPU Time Used","Estimated Training Performance","Wallclock Time","Incumbent ID","Automatic Configurator (CPU) Time","Configuration..."
+0.000000, 2147483648.000000, 0.042014, 1, 0.042014, l2_reg='0.9719415623694658', lrate='0.14858547132462263', n_epochs='400'
+1.373045, 0.114734, 1.589983, 1, 0.216938, l2_reg='0.9719415623694658', lrate='0.14858547132462263', n_epochs='400'
+41.597731, 0.112200, 62.554251, 2, 20.956520, l2_reg='0.9761410023848793', lrate='0.14743114080979203', n_epochs='522'

@@ -2,9 +2,7 @@ from hyperopt.pyll import scope
 from hyperopt import hp, tpe, fmin, Trials, STATUS_OK
 import numpy as np
 import csv
-import pickle
-
-
+import xgboost as xgb
 
 # define space for TPE HPO
 space = {"lrate": hp.uniform("lrate", 0, 1),
@@ -12,26 +10,27 @@ space = {"lrate": hp.uniform("lrate", 0, 1),
          # "batchsize": scope.int(hp.quniform("batchsize", 20, 2000, 1)),
          "n_epochs": scope.int(hp.quniform("n_epochs", 5, 2000, 1))}
 
+surrogate_model = xgb.Booster()
+surrogate_model.load_model('xgboost/XGB-TPE.txt')
 
-
-def surrogate(space):
-    x = np.array([[space['lrate'], space['l2_reg'], space['n_epochs']]])
-
-    return xgb.predict(x)
-
+def surrogate(config):
+    global surrogate_model
+    x = np.array([[config['lrate'], config['l2_reg'], config['n_epochs']]])
+    x = xgb.DMatrix(x)
+    return float(surrogate_model.predict(x))  # SMAC minimizes the objective functio
 
 
 if __name__ == "__main__":
-    num_repeat = 10
+    num_repeat = 2
 
     for i in range(num_repeat):
-        print(f'Run {i}/{num_repeat}')
+        print(f'Run {i}/{num_repeat-1}')
         # perform TPE optimization and do logging
         trials = Trials()
         best_params = fmin(fn=surrogate,
                         space=space,
                         algo=tpe.suggest,
-                        max_evals=100,
+                        max_evals=5,
                         trials=trials)
 
         print("Best parameters:", best_params)
@@ -42,7 +41,7 @@ if __name__ == "__main__":
         val['loss'] = loss
         print(val)
 
-        filename = 'csv_data/hpo{}.csv'.format(i)
+        filename = 'TPE_xgb_hpo{}.csv'.format(i)
         # header = ['lrate', 'l2_reg', 'batchsize', 'n_epochs', 'loss']
         header = ['lrate', 'l2_reg', 'n_epochs', 'predicted_loss']
         values = (val.get(key, []) for key in header)

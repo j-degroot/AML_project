@@ -52,4 +52,4 @@ model = XGBRegressor(**best_config)
 
 model.fit(data_X, data_y) # fits on all data
 
-model.save_model('XGB-TPE.model')
+model.save_model('XGB-TPE.txt')

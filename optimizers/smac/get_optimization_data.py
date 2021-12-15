@@ -16,6 +16,10 @@ mnist = fetch_openml("mnist_784")
 
 train_img, test_img, train_lbl, test_lbl = train_test_split(mnist.data, mnist.target, test_size=1/7.0, random_state=0)
 
+# for debugging purposes
+train_img, train_lbl = train_img[:1000], train_lbl[:1000]
+test_img, test_lbl = test_img[:200], test_lbl[:200]
+
 print('Data importing and splitting complete')
 
 def train_logistic_regression(config):
@@ -54,7 +58,8 @@ if __name__ == "__main__":
         "run_obj": "quality",  # Optimize quality (alternatively runtime)
         "runcount-limit": 100,  # Max number of function evaluations (the more the better)
         "cs": configspace,
-        "abort_on_first_run_crash": False
+        'deterministic' : True
+        'abort_on_first_crash' : False
     })
     for seed in range(0, 11):
         smac = SMAC4BB(scenario=scenario, tae_runner=train_logistic_regression, rng=seed)

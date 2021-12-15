@@ -4,7 +4,6 @@ import numpy as np
 import csv
 import pickle
 
-xgb = pickle.load(open('XGB-SMAC.sav', 'rb'))
 
 
 # define space for TPE HPO

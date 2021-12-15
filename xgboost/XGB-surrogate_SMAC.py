@@ -1,9 +1,8 @@
-from xgboost import XGBClassifier
-from sklearn.model_selection import RandomizedSearchCV
+from xgboost import XGBRegressor
+from sklearn.model_selection import ParameterSampler, train_test_split
 from csv import reader
 import numpy as np
 import scipy.stats as stats
-import pickle
 
 data_X = []
 data_y = []
@@ -28,8 +27,11 @@ np.random.shuffle(c)
 data_X, data_y = zip(*c)
 data_X = np.array(data_X)
 
-#Split data
-split_point = int(len(data_y)/2)
+print('Data Loaded')
+
+X_train, X_test, y_train, y_test = train_test_split(data_X, data_y, test_size=0.5, random_state=41)
+print(type(X_train))
+print(type(y_train))
 
 param_distributions = dict(max_depth=stats.randint(3,18),
                            gamma=stats.uniform(1,9),
@@ -37,15 +39,19 @@ param_distributions = dict(max_depth=stats.randint(3,18),
                            min_child_weight=stats.randint(1, 10))
 
 xgb = XGBRegressor()
+best_acc = 0
+best_config = dict()
+for config in ParameterSampler(param_distributions, n_iter=100, random_state=0):
+    # import pdb; pdb.set_trace()
+    model = XGBRegressor(**config)
+    model.fit(X_train, y_train)
+    score = model.score(X_test, y_test)
+    if score > best_acc:
+        best_acc = score
+        best_config = config
 
-clf = RandomizedSearchCV(xgb, param_distributions, cv=2, n_iter=100, random_state=0, n_jobs=-1)
-
-search = clf.fit(data_X, data_y)
-
-model = XGBClassifier(max_features = search.best_params_['max_features'], min_samples_split = search.best_params_['min_samples_split'], n_estimators = search.best_params_['n_estimators'])
+model = XGBRegressor(**best_config)
 
 model.fit(data_X, data_y) # fits on all data
 
-filename = 'XGB-SMAC.sav'
-
-pickle.dump(model, open(filename, 'wb'))
+model.save_model('XGB-SMAC.model')

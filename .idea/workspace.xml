@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ded6dab4-cc96-434c-85d5-e04cbcc782d0" name="Changes" comment="Added the selected and trained xgboost model for smac and tpe">
-      <change afterPath="$PROJECT_DIR$/xgboost/get_surrogate_data_SMAC.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/xgboost/get_surrogate_data_TPE.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="ded6dab4-cc96-434c-85d5-e04cbcc782d0" name="Changes" comment="Some corrections and start of implementing parametersampler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optimizers/smac/get_optimization_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimizers/smac/get_optimization_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optimizers/spearmint/branin.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimizers/spearmint/branin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xgboost/XGB-TPE.sav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xgboost/XGB-SMAC.sav" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/xgboost/XGB-surrogate_SMAC.py" beforeDir="false" afterPath="$PROJECT_DIR$/xgboost/XGB-surrogate_SMAC.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xgboost/XGB-surrogate_TPE.py" beforeDir="false" afterPath="$PROJECT_DIR$/xgboost/XGB-surrogate_TPE.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xgboost/get_surrogate_data_TPE.py" beforeDir="false" afterPath="$PROJECT_DIR$/xgboost/get_surrogate_data_TPE.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +73,8 @@
       <recent name="$PROJECT_DIR$/optimizers/smac" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/optimizers/smac/non_relevant" />
       <recent name="$PROJECT_DIR$/xgboost" />
+      <recent name="$PROJECT_DIR$/optimizers/smac/non_relevant" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/non-relevant" />
       <recent name="$PROJECT_DIR$/optimizers/smac" />
@@ -126,7 +123,7 @@
       <workItem from="1639504669746" duration="3930000" />
       <workItem from="1639511540625" duration="3531000" />
       <workItem from="1639562025722" duration="464000" />
-      <workItem from="1639562497394" duration="6889000" />
+      <workItem from="1639562497394" duration="8310000" />
     </task>
     <task id="LOCAL-00001" summary="added json output files">
       <created>1639143122482</created>
@@ -191,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639483005063</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Some corrections and start of implementing parametersampler">
+      <created>1639587309581</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1639587309581</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +222,8 @@
     <MESSAGE value="added xgboost surrogate for smac and tpe optimization" />
     <MESSAGE value="Moving files" />
     <MESSAGE value="Added the selected and trained xgboost model for smac and tpe" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the selected and trained xgboost model for smac and tpe" />
+    <MESSAGE value="Some corrections and start of implementing parametersampler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some corrections and start of implementing parametersampler" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/AML_project$get_optimization_data.coverage" NAME="get_optimization_data Coverage Results" MODIFIED="1639221258570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/optimizers/smac" />

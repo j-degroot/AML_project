@@ -7,7 +7,7 @@ from smac.scenario.scenario import Scenario
 
 
 configspace = ConfigurationSpace()
-configspace.add_hyperparameter(UniformFloatHyperparameter("lrate", 0, 10))
+configspace.add_hyperparameter(UniformFloatHyperparameter("lrate", 0, 1))
 configspace.add_hyperparameter(UniformFloatHyperparameter("l2_reg", 0, 1))
 configspace.add_hyperparameter(UniformIntegerHyperparameter("n_epochs", 5, 2000))
 
@@ -27,12 +27,12 @@ if __name__ == "__main__":
     # Provide meta data for the optimization
     scenario = Scenario({
         "run_obj": "quality",  # Optimize quality (alternatively runtime)
-        "runcount-limit": 3,  # Max number of function evaluations (the more the better)
+        "runcount-limit": 100,  # Max number of function evaluations (the more the better)
         "cs": configspace,
         'deterministic': True,
         "abort_on_first_run_crash": True
     })
-    for seed in range(0, 3):
+    for seed in range(0, 10):
         smac = SMAC4BB(scenario=scenario, tae_runner=surrogate, rng=seed)
         best_found_config = smac.optimize()
         print(best_found_config)

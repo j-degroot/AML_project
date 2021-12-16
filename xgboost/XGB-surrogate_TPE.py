@@ -6,10 +6,10 @@ import scipy.stats as stats
 
 data_X = []
 data_y = []
-opts = ['random', 'tpe', 'run']
+opts = ['random', 'smac', 'run']
 for op in opts:
     for i in range(10):
-        with open('Data-NoSMAC/' + op + str(i) +'.csv', 'r') as read_obj:
+        with open('Data-NoTPE/' + op + str(i) +'.csv', 'r') as read_obj:
             csv_reader = reader(read_obj)
             header = next(csv_reader)
             # Check file as empty
@@ -52,4 +52,4 @@ model = XGBRegressor(**best_config)
 
 model.fit(data_X, data_y) # fits on all data
 
-model.save_model('XGB-TPE.txt')
+model.save_model('xgboost/XGB-TPE_old.txt')

@@ -11,7 +11,7 @@ space = {"lrate": hp.uniform("lrate", 0, 1),
          "n_epochs": scope.int(hp.quniform("n_epochs", 5, 2000, 1))}
 
 surrogate_model = xgb.Booster()
-surrogate_model.load_model('xgboost/XGB-TPE.txt')
+surrogate_model.load_model('xgboost/XGB-TPE_old.txt')
 
 def surrogate(config):
     global surrogate_model

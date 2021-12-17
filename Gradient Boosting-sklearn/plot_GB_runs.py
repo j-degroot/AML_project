@@ -16,7 +16,7 @@ for i in range(10):
     losses_tpe = []
     losses_smac = []
     losses_random = []
-    with open('tpe-real-runs/tpe'  + str(i) +'.csv', 'r') as read_obj:
+    with open('tpe-gb-surrogate-runs/gb_tpe'  + str(i) +'.csv', 'r') as read_obj:
         csv_reader = reader(read_obj)
         header = next(csv_reader)
         # Check file as empty
@@ -24,7 +24,7 @@ for i in range(10):
             # Iterate over each row after the header in the csv
             for row in csv_reader:
                 losses_tpe.append(float(row[3]))
-    with open('smac-real-runs/smac'  + str(i) +'.csv', 'r') as read_obj:
+    with open('smac-gb-surrogate-runs/gb_smac'  + str(i) +'.csv', 'r') as read_obj:
         csv_reader = reader(read_obj)
         header = next(csv_reader)
         # Check file as empty
@@ -32,7 +32,7 @@ for i in range(10):
             # Iterate over each row after the header in the csv
             for row in csv_reader:
                 losses_smac.append(float(row[3]))
-    with open('random-real-runs/random'  + str(i) +'.csv', 'r') as read_obj:
+    with open('random-gb-surrogate-runs/gb_'  + str(i) +'.csv', 'r') as read_obj:
         csv_reader = reader(read_obj)
         header = next(csv_reader)
         # Check file as empty
@@ -119,12 +119,12 @@ y_random = np.array(y_random)
 st_devs_random = np.array(st_devs_random)
 
 
-ax.plot(x_smac, y_smac, color = '#e76100', linestyle = 'solid', lw = 2.5, label= 'SMAC REAL', path_effects=[pe.Stroke(linewidth=3.5, foreground='w'), pe.Normal()])
+ax.plot(x_smac, y_smac, color = '#e76100', linestyle = 'solid', lw = 2.5, label= 'SMAC GRADIENT BOOSTING', path_effects=[pe.Stroke(linewidth=3.5, foreground='w'), pe.Normal()])
 
 
-ax.plot(x_tpe, y_tpe, 'k--', lw = 2.3, label= 'TPE REAL', path_effects=[pe.Stroke(linewidth=3.5, foreground='w'), pe.Normal()])
+ax.plot(x_tpe, y_tpe, 'k--', lw = 2.3, label= 'TPE GRADIENT BOOSTING', path_effects=[pe.Stroke(linewidth=3.5, foreground='w'), pe.Normal()])
 
-ax.plot(x_random, y_random, color = '#5D3C99', linestyle = (0, (3, 1, 1, 1)), lw = 2.5, label= 'RANDOM SEARCH REAL', path_effects=[pe.Stroke(linewidth=3.5, foreground='w'), pe.Normal()])
+ax.plot(x_random, y_random, color = '#5D3C99', linestyle =  (0, (3, 1, 1, 1)), lw = 2.5, label= 'RANDOM SEARCH GRADIENT BOOSTING', path_effects=[pe.Stroke(linewidth=3.5, foreground='w'), pe.Normal()])
 
 
 
@@ -132,7 +132,7 @@ ax.set_ylim([0.1, 0.18])
 ax.set_xlabel('# Evaluations')
 ax.set_xscale('log')
 ax.set_ylabel('Best Loss Found So Far')
-ax.set_title('Optimizers on Real Surrogate')
+ax.set_title('Optimizers on Sklearn Gradient Boosting Surrogate')
 ax.grid()
 ax.fill_between(x_smac, y_smac -st_devs_smac, y_smac+st_devs_smac, color = '#e76100', alpha= 0.5)
 ax.fill_between(x_tpe, y_tpe -st_devs_tpe, y_tpe+st_devs_tpe, color = 'k', alpha= 0.3)

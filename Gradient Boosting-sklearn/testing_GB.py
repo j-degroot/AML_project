@@ -3,10 +3,10 @@ from csv import reader
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.patheffects as pe
+from matplotlib.markers import MarkerStyle
 
 from sklearn.metrics import mean_squared_error
 from scipy.stats import spearmanr 
-from matplotlib.markers import MarkerStyle
 import pickle
 
 data_X = []
@@ -24,14 +24,12 @@ for op in opts:
                     data_X.append([float(i) for i in row[:3]])
                     data_y.append(float(row[3]))
 
-filename = 'RF-TPE.sav'
+filename = 'GB-TPE.sav'
 rf_surrogate = pickle.load(open(filename, 'rb'))
 
 
 y_actual = data_y
 y_predicted = []
-
-
 
 for i in data_X:
     pred = rf_surrogate.predict(np.array(i).reshape(1,-1))
@@ -66,7 +64,7 @@ ax.set_xlabel('True performance')
 ax.set_xlim([0.09, 0.3])
 ax.set_ylim([0.09, 0.3])
 ax.set_ylabel('Model prediction')
-ax.set_title('RF surrogate predictions on leave-TPE out data')
+ax.set_title('Sklearn GB surrogate predictions on leave-TPE out data')
 ax.grid()
 
 

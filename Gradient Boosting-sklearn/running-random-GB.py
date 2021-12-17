@@ -10,8 +10,12 @@ import csv
 from itertools import zip_longest
 
 
-filename = 'RF-TPE.sav'
-rf_surrogate = pickle.load(open(filename, 'rb'))
+from sklearn.model_selection import ParameterSampler
+import scipy.stats as stats
+
+
+filename = 'GB-TPE.sav'
+gb_surrogate = pickle.load(open(filename, 'rb'))
 
 def random_forest_loss_predict(params):
     """
@@ -20,7 +24,7 @@ def random_forest_loss_predict(params):
     :return:
     """
     X_params = np.array([params['lrate'], params['l2_reg'], params['n_epochs'] ]).reshape(1, -1)
-    loss = rf_surrogate.predict(X_params)
+    loss = gb_surrogate.predict(X_params)
     return loss
 
 
@@ -41,39 +45,32 @@ def obj_func(params):
 
     return {'loss': loss, 'status': STATUS_OK}
 
-
+param_distributions = dict(lrate=stats.uniform(0.0000001,0.98),
+                    l2_reg=stats.uniform(0.0000001,0.98),
+                    n_epochs=stats.randint(2, 2000))
 if __name__ == "__main__":
     num_repeat = 10
 
     for i in range(num_repeat):
+
+        rows = []
         print(f'Run {i}/{num_repeat}')
         # perform TPE optimization and do logging
-        trials = Trials()
-        best_params = fmin(fn=obj_func,
-                        space=space,
-                        algo=tpe.suggest,
-                        max_evals=100,
-                        trials=trials)
-
-        print("Best parameters:", best_params)
-        print(trials.best_trial['result']['loss'])
-
-        loss = trials.losses()
-        val = trials.vals
-        val['loss'] = loss
-        # with open('best.json', 'w') as f:
-        #     f.write(json.dumps({"Loss": trials.best_trial['result']['loss'],
-        #                         "Best params": best_params}))
-
-        filename = '/Users/mrsalwer/Desktop/Uni/Leiden Uni/Year-1/AutoML/Project/Random Forrest/tpe-rf-surrogate-runs/RF_tpe{}.csv'.format(i)
-        # header = ['lrate', 'l2_reg', 'batchsize', 'n_epochs', 'loss']
+        filename = 'random-gb-surrogate-runs/gb_{}.csv'.format(i)
         header = ['lrate', 'l2_reg', 'n_epochs', 'loss']
-        values = (val.get(key, []) for key in header)
-        data = (dict(zip(header, row)) for row in zip(*values))
-        print(data)
-        exit()
 
         with open(filename, 'w') as f:
             wrtr = csv.DictWriter(f, fieldnames=header)
             wrtr.writeheader()
-            wrtr.writerows(data)
+
+        for config in ParameterSampler(param_distributions, n_iter=100):
+            params = [config['lrate'], config['lrate'], config['n_epochs']]
+            prediction = gb_surrogate.predict(np.array(params).reshape(1,-1))
+            row = []
+            params.append(prediction)
+            rows.append(params)
+        
+        with open(filename, 'w') as f:
+            wrtr = csv.writer(f)
+            wrtr.writerow(header)    
+            wrtr.writerows(rows)

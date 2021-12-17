@@ -10,10 +10,10 @@ import csv
 from itertools import zip_longest
 
 
-filename = 'RF-TPE.sav'
+filename = 'GB-TPE.sav'
 rf_surrogate = pickle.load(open(filename, 'rb'))
 
-def random_forest_loss_predict(params):
+def GB_loss_predict(params):
     """
     Predict loss from trained Random Forest as surrogate benchmark model
     :param params:
@@ -37,7 +37,7 @@ def obj_func(params):
     :param params:
     :return: predicted loss from surrogate benchmark (random forest)
     """
-    loss = random_forest_loss_predict(params)
+    loss = GB_loss_predict(params)
 
     return {'loss': loss, 'status': STATUS_OK}
 
@@ -61,18 +61,17 @@ if __name__ == "__main__":
         loss = trials.losses()
         val = trials.vals
         val['loss'] = loss
+        print(val)
+
         # with open('best.json', 'w') as f:
         #     f.write(json.dumps({"Loss": trials.best_trial['result']['loss'],
         #                         "Best params": best_params}))
 
-        filename = '/Users/mrsalwer/Desktop/Uni/Leiden Uni/Year-1/AutoML/Project/Random Forrest/tpe-rf-surrogate-runs/RF_tpe{}.csv'.format(i)
+        filename = 'tpe-gb-surrogate-runs/gb_tpe{}.csv'.format(i)
         # header = ['lrate', 'l2_reg', 'batchsize', 'n_epochs', 'loss']
         header = ['lrate', 'l2_reg', 'n_epochs', 'loss']
         values = (val.get(key, []) for key in header)
         data = (dict(zip(header, row)) for row in zip(*values))
-        print(data)
-        exit()
-
         with open(filename, 'w') as f:
             wrtr = csv.DictWriter(f, fieldnames=header)
             wrtr.writeheader()

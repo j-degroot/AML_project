@@ -23,9 +23,9 @@ for op in opts:
 # HPO on RF Surrogate
 
 # Shuffle data 
-c = list(zip(data_X, data_y)) 
-np.random.shuffle(c)
-data_X, data_y = zip(*c)
+# c = list(zip(data_X, data_y)) 
+# np.random.shuffle(c)
+# data_X, data_y = zip(*c)
 
 #Split data
 split_point = int(len(data_y)/2)

@@ -63,10 +63,10 @@ ax.scatter(y_actual[full_size-size:], y_predicted[full_size-size:], s = 3, marke
 
 
 ax.set_xlabel('True performance')
-ax.set_xlim([0.09, 0.25])
-ax.set_ylim([0.09, 0.25])
+ax.set_xlim([0.09, 0.3])
+ax.set_ylim([0.09, 0.3])
 ax.set_ylabel('Model prediction')
-ax.set_title('RF surrogaate predictions on leave-TPE out data')
+ax.set_title('RF surrogate predictions on leave-TPE out data')
 ax.grid()
 
 

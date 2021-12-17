@@ -8,4 +8,4 @@ random forest - used to make and test the random forest surrogate
 
 xgboost - used to make and test the xgboost surrogate
 
-gradient boosting sklearn - used to make and test the gradient boosting sklearn
+gradient boosting sklearn - used to make and test the sk-gradient boosting surrogate

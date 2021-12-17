@@ -16,10 +16,6 @@ mnist = fetch_openml("mnist_784")
 
 train_img, test_img, train_lbl, test_lbl = train_test_split(mnist.data, mnist.target, test_size=1/7.0, random_state=0)
 
-# for debugging purposes
-train_img, train_lbl = train_img[:1000], train_lbl[:1000]
-test_img, test_lbl = test_img[:200], test_lbl[:200]
-
 print('Data importing and splitting complete')
 
 def train_logistic_regression(config):
